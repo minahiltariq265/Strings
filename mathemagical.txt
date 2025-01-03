@@ -1,0 +1,52 @@
+def suppress_and_sum(m):
+    str_m = str(m)  # Convert to string
+    n = len(str_m) 
+    suppressed_numbers = []
+    # Suppress each digit one by one
+    for i in range(n):
+        suppressed_number = int(str_m[:i] + str_m[i+1:])
+        suppressed_numbers.append(suppressed_number)
+    total_sum = sum(suppressed_numbers)
+
+    for num in suppressed_numbers:
+        print(num) 
+    print("=" * (n + 1))
+    print(total_sum)
+
+def main():
+    m = int(input())
+    suppress_and_sum(m)
+main()
+
+
+
+
+
+def suppress_and_sum(m):
+    str_m = str(m)  
+    n = len(str_m)  
+    suppressed_numbers = []
+    
+    # Suppress each digit one by one
+    for i in range(n):
+        suppressed_number = int(str_m[:i] + str_m[i+1:])  # Remove the i-th character
+        suppressed_numbers.append(suppressed_number)
+    
+    total_sum = sum(suppressed_numbers)  
+    
+    # Print the suppressed numbers
+    for i, num in enumerate(suppressed_numbers):
+        if i == len(suppressed_numbers) - 1:  
+            print(f"+ {num:>6}")
+        else:
+            print(f"  {num:>6}") 
+    # Print the line of equal signs and the total sum
+    print("=" * (n + 1))
+    print(f" {total_sum:>6}")
+
+def main():
+    m = int(input("Enter a number: "))  
+    suppress_and_sum(m)  # Call the function with the input number
+
+main()
+

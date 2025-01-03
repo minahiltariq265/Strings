@@ -1,0 +1,29 @@
+def letter_evolution(word, target_letter):
+    # Calculate the shift value
+    shift = (ord(target_letter) - ord(word[0])) % 26
+
+    evolved_word = []
+    evolution_display = []
+
+    for char in word:
+        evolved_char = chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+        evolved_word.append(evolved_char)
+
+        # Create the evolution string
+        evolution = char.upper() 
+        current_char = char
+
+        # Construct the evolution 
+        while current_char != evolved_char:
+            current_char = chr((ord(current_char) - ord('A') + 1) % 26 + ord('A'))
+            evolution += current_char.lower() 
+
+        evolution = evolution[:-1] + evolved_char
+        evolution_display.append(evolution)
+
+    for evolution in evolution_display:
+        print(evolution)
+input_word = input("Enter the word: ")
+target_letter = input("Enter the target letter: ")
+
+letter_evolution(input_word, target_letter)

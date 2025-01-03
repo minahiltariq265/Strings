@@ -1,0 +1,39 @@
+def is_valid_isbn10(isbn):
+    if len(isbn) != 10:
+        return False
+    total = 0
+    for i in range(9):
+        if not isbn[i].isdigit():
+            return False
+        total += (i + 1) * int(isbn[i])
+#Mod11
+    check_digit = total % 11
+
+    # Handle the last digit
+    if isbn[9] == 'X':
+        return check_digit == 10
+    elif isbn[9].isdigit():
+        return check_digit == int(isbn[9])
+    else:
+        return False
+
+def main():
+    results = []
+    while True:
+        isbn = input().strip()
+        
+        # Stop the input when at 'stop'
+        if isbn == 'stop':
+            break
+        
+        # if the ISBN-10 is valid or not
+        if is_valid_isbn10(isbn):
+            results.append("OK")
+        else:
+            results.append("WRONG")
+  
+    for result in results:
+        print(result)
+
+# Run the main function
+main()

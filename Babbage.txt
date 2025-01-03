@@ -1,0 +1,17 @@
+def find_smallest_numbers(n, ending_digits):
+    results = []
+    current_number = 1
+    while len(results) < n:
+        square = current_number ** 2
+        if str(square).endswith(ending_digits):
+            results.append(current_number)
+        current_number += 1
+    #Required output 
+    for num in results:
+        print(f"{num} * {num} = {num**2}")
+
+def main():
+    n = int(input().strip())  # Number of smallest natural numbers to find
+    ending_digits = input().strip()  # The sequence of digits the square should end with
+    find_smallest_numbers(n, ending_digits)
+main()

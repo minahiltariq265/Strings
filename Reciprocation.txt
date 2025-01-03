@@ -1,0 +1,33 @@
+def validate_sequences(seq1, seq2, seq3): #validate_sequences make sure that indexes of all three seqs are same
+    sequences = [seq1, seq2, seq3]
+    output = []
+
+    # Iterate through each sequence
+    for seq_idx, seq in enumerate(sequences):
+        validated_seq = []
+        
+        # Iterate through each column
+        for i in range(10):
+            count_in_other_sequences = 0
+            
+            for j in range(3):
+                if j != seq_idx:  # It will skip the current sequence
+                    count_in_other_sequences += sequences[j].count(str(i))
+            
+            if int(seq[i]) == count_in_other_sequences:
+                validated_seq.append(seq[i])
+            else:
+                validated_seq.append("X")
+        
+        output.append("".join(validated_seq))
+    
+    return output
+
+seq1 = input("Enter the first sequence: ")
+seq2 = input("Enter the second sequence: ")
+seq3 = input("Enter the third sequence: ")
+
+result = validate_sequences(seq1, seq2, seq3)
+
+for line in result:
+    print(line)
